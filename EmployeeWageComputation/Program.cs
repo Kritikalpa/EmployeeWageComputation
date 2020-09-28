@@ -7,14 +7,13 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-            EmployeeWageBuilderObject google = new EmployeeWageBuilderObject("Google", 40, 20, 100);
-            EmployeeWageBuilderObject facebook = new EmployeeWageBuilderObject("Facebook", 30, 15, 75);
+            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+            
+            empWageBuilder.addCompanyEmpWage("Google", 40, 20, 100);
+            empWageBuilder.addCompanyEmpWage("Facebook", 30, 15, 75);
+            empWageBuilder.employeeTotalWage();
 
-            google.computeEmployeeWage();
-            facebook.computeEmployeeWage();
-
-            google.toString();
-            facebook.toString();
+            
         }
     }
 }
