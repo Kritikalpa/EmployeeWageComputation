@@ -7,17 +7,12 @@ namespace EmployeeWage
 
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
-        public const int EMP_RATE_PER_HOUR = 20;
-        public const int NUM_OF_WORKING_DAYS = 20;
-        public const int NUM_OF_WORKING_HOURS = 100;
 
 
-        public static int totalWage = 0, currentDay = 0, currentHours = 0;
-
-
-        public static void ComputeEmployeeWage()
+        public static void ComputeEmployeeWage(String companyName, int employeeWagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            while (currentDay < NUM_OF_WORKING_DAYS && currentHours < NUM_OF_WORKING_HOURS)
+            int totalWage = 0, currentDay = 0, currentHours = 0;
+            while (currentDay < maxWorkingDays && currentHours < maxWorkingHours)
             {
                 int empHours = 0;
                 int empWage = 0;
@@ -39,17 +34,17 @@ namespace EmployeeWage
                 }
                 currentHours += empHours;
                 currentDay += 1;
-                empWage = empHours * EMP_RATE_PER_HOUR;
+                empWage = empHours * employeeWagePerHour;
                 totalWage += empWage;
-                Console.WriteLine("Day: " + currentDay + ", Hours worked: " + currentHours + ", Wage received: " + empWage + ", Total Wage: " + totalWage);
+
             }
-            Console.WriteLine("Emp Wage : " + totalWage);
+            Console.WriteLine("Employee Wage in {0}: {1}", companyName, totalWage);
         }
 
         static void Main(string[] args)
         {
-            ComputeEmployeeWage();
+            ComputeEmployeeWage("Google", 40, 20, 100);
+            ComputeEmployeeWage("Facebook", 30, 15, 75);
         }
     }
 }
-© 2020 GitHub, Inc.
