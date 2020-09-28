@@ -4,22 +4,25 @@ namespace EmployeeWage
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            const int IS_PART_TIME = 1;
-            const int IS_FULL_TIME = 2;
-            int EMP_RATE_PER_HOUR = 20;
-            int NUM_OF_WORKING_DAYS = 20;
-            int NUM_OF_WORKING_HOURS = 100;
-            int empHours, empWage, empCheck;
-            int totalWage = 0, currentDay = 0, currentHours = 0;
 
+        public const int IS_PART_TIME = 1;
+        public const int IS_FULL_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        public const int NUM_OF_WORKING_HOURS = 100;
+
+
+        public static int totalWage = 0, currentDay = 0, currentHours = 0;
+
+
+        public static void ComputeEmployeeWage()
+        {
             while (currentDay < NUM_OF_WORKING_DAYS && currentHours < NUM_OF_WORKING_HOURS)
             {
-                empHours = 0;
-                empWage = 0;
+                int empHours = 0;
+                int empWage = 0;
                 Random random = new Random();
-                empCheck = random.Next(0, 3);
+                int empCheck = random.Next(0, 3);
                 switch (empCheck)
                 {
                     case IS_PART_TIME:
@@ -40,9 +43,13 @@ namespace EmployeeWage
                 totalWage += empWage;
                 Console.WriteLine("Day: " + currentDay + ", Hours worked: " + currentHours + ", Wage received: " + empWage + ", Total Wage: " + totalWage);
             }
-
-
             Console.WriteLine("Emp Wage : " + totalWage);
+        }
+
+        static void Main(string[] args)
+        {
+            ComputeEmployeeWage();
         }
     }
 }
+© 2020 GitHub, Inc.
