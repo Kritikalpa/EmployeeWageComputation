@@ -11,7 +11,7 @@ namespace EmployeeWage
             
             empWageBuilder.addCompanyEmpWage("Google", 40, 20, 100);
             empWageBuilder.addCompanyEmpWage("Facebook", 30, 15, 75);
-            empWageBuilder.employeeTotalWage();
+            empWageBuilder.computeEmpWage();
 
             
         }
