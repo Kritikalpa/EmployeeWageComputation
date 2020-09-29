@@ -10,15 +10,19 @@ namespace EmployeeWageComputation.Services
         
         
         private LinkedList<CompanyEmpWage> companyEmpWageList;
+        private Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
 
         public EmpWageBuilder()
         {
             this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
+            this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
         }
 
         public void addCompanyEmpWage(string companyName, int employeeWagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            this.companyEmpWageList.AddLast(new CompanyEmpWage(companyName, employeeWagePerHour, maxWorkingDays, maxWorkingHours));
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, employeeWagePerHour, maxWorkingDays, maxWorkingHours);
+            this.companyEmpWageList.AddLast(companyEmpWage);
+            this.companyToEmpWageMap.Add(companyName, companyEmpWage);
             
         }
         public void computeEmpWage()
@@ -54,6 +58,10 @@ namespace EmployeeWageComputation.Services
                 companyEmpWage.setAvgDailyWage(totalWage/20);
                 Console.WriteLine(companyEmpWage.toString());
             }
+        }
+        public int getTotalWage(string company)
+        {
+            return this.companyToEmpWageMap[company].totalWage;
         }
     }
 }

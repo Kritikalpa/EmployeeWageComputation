@@ -1,5 +1,5 @@
 ﻿using EmployeeWageComputation.Services;
-
+using System;
 
 namespace EmployeeWage
 {
@@ -13,6 +13,7 @@ namespace EmployeeWage
             empWageBuilder.addCompanyEmpWage("Facebook", 30, 15, 75);
             empWageBuilder.computeEmpWage();
 
+            Console.WriteLine("Total Wage for Google company : " + empWageBuilder.getTotalWage("Google"));
             
         }
     }
