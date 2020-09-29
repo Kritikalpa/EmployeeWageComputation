@@ -51,7 +51,8 @@ namespace EmployeeWageComputation.Services
 
                 int totalWage = currentHours * companyEmpWage.employeeWagePerHour;
                 companyEmpWage.setTotalEmpWage(totalWage);
-                Console.WriteLine(companyEmpWage.getTotalEmpWage());
+                companyEmpWage.setAvgDailyWage(totalWage/20);
+                Console.WriteLine(companyEmpWage.toString());
             }
         }
     }

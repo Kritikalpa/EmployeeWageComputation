@@ -11,6 +11,7 @@ namespace EmployeeWageComputation.Services
         public int maxWorkingDays;
         public int maxWorkingHours;
         public int totalWage;
+        public int avgDailyWage;
 
         public CompanyEmpWage(string companyName, int employeeWagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
@@ -25,9 +26,14 @@ namespace EmployeeWageComputation.Services
             this.totalWage = totalWage;
         }
 
-        public string getTotalEmpWage()
+        public void setAvgDailyWage(int avgDailyWage)
         {
-            return "Total Employee wage for company : " + this.companyName + " is: " + this.totalWage;
+            this.avgDailyWage = avgDailyWage;
+        }
+
+        public string toString()
+        {
+            return "Total Employee wage for company  " + this.companyName + " is " + this.totalWage + " and average daily wage is " + this.avgDailyWage;
         }
     }
 }
