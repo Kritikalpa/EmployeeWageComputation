@@ -1,31 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace EmployeeWageComputation.Services
 {
-    class EmpWageBuilderArray : InterfaceEmpWage
+    class EmpWageBuilder : InterfaceEmpWage
     {
         public const int IS_PART_TIME = 1;
         public const int IS_FULL_TIME = 2;
         
-        private int numOfCompany = 0;
-        private CompanyEmpWage[] companyEmpWageArray;
+        
+        private LinkedList<CompanyEmpWage> companyEmpWageList;
 
-        public EmpWageBuilderArray()
+        public EmpWageBuilder()
         {
-            this.companyEmpWageArray = new CompanyEmpWage[5];
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
         }
 
         public void addCompanyEmpWage(string companyName, int employeeWagePerHour, int maxWorkingDays, int maxWorkingHours)
         {
-            this.companyEmpWageArray[numOfCompany] = new CompanyEmpWage(companyName, employeeWagePerHour, maxWorkingDays, maxWorkingHours);
-            numOfCompany++;
+            this.companyEmpWageList.AddLast(new CompanyEmpWage(companyName, employeeWagePerHour, maxWorkingDays, maxWorkingHours));
+            
         }
         public void computeEmpWage()
         {
-            for (int i = 0; i < numOfCompany; i++)
+            foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
             {
                 int currentDay = 0, currentHours = 0;
-                while (currentDay < this.companyEmpWageArray[i].maxWorkingDays && currentHours < this.companyEmpWageArray[i].maxWorkingHours)
+                while (currentDay < companyEmpWage.maxWorkingDays && currentHours < companyEmpWage.maxWorkingHours)
                 {
                     int empHours = 0;
                     Random random = new Random();
@@ -48,9 +49,9 @@ namespace EmployeeWageComputation.Services
                     currentDay += 1;
                 }
 
-                int totalWage = currentHours * this.companyEmpWageArray[i].employeeWagePerHour;
-                this.companyEmpWageArray[i].setTotalEmpWage(totalWage);
-                Console.WriteLine(this.companyEmpWageArray[i].getTotalEmpWage());
+                int totalWage = currentHours * companyEmpWage.employeeWagePerHour;
+                companyEmpWage.setTotalEmpWage(totalWage);
+                Console.WriteLine(companyEmpWage.getTotalEmpWage());
             }
         }
     }

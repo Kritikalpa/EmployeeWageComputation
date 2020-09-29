@@ -7,7 +7,7 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-            EmpWageBuilderArray empWageBuilder = new EmpWageBuilderArray();
+            EmpWageBuilder empWageBuilder = new EmpWageBuilder();
             
             empWageBuilder.addCompanyEmpWage("Google", 40, 20, 100);
             empWageBuilder.addCompanyEmpWage("Facebook", 30, 15, 75);
